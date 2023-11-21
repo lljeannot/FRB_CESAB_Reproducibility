@@ -35,4 +35,4 @@ utils::file.edit(here::here("analyses", "download-data.R"))
 add_readme_rmd(type = "compendium")
 
 ## Conversion du README.Rmd en README.md ----
-rmarkdown::render("README.md")
+rmarkdown::render("README.Rmd")
