@@ -1,0 +1,59 @@
+---
+date: "` r format(Sys.time(), '%Y/%m/%d')`"
+format: html
+params: 
+  fam: Ursidae
+title: "Report"
+---
+
+This report aims to provide data regarding the number of regions for the Ursidae family, and to provide a graphical representation.
+
+```{r}
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(echo = T,
+                      eval = T,
+                      message = F,
+                      collapse = T,
+                      fig.width = 7,
+                      fig.height = 7,
+                      out.width = "100%",
+                      dpi = 300)
+#params = family par exemple, on peut aussi le mettre en titre en R "` r format(Sys.time(), '%Y/%m/%d')`"
+
+devtools::load_all()
+```
+#Data acquisition
+
+```{r}
+#| label: download-data
+#| echo: false
+
+dl("github.com/rdatatoolbox/datarepo/blob/main/data/pantheria/PanTHERIA_1-0_WR05_Aug2008.txt",
+      "github.com/rdatatoolbox/datarepo/blob/main/data/wildfinder/wildfinder-ecoregions_list.csv",
+      "github.com/rdatatoolbox/datarepo/blob/main/data/wildfinder/wildfinder-ecoregions_species.csv",
+      "github.com/rdatatoolbox/datarepo/blob/main/data/wildfinder/wildfinder-mammals_list.csv")
+
+```
+
+#Table
+
+```{r}
+#| label: data-table
+#| echo: false
+
+df <- nb_ecoregions_sp(params$"fam")
+knitr::kable(df)
+
+```
+
+#Graph
+
+```{r}
+#| label: data-graph
+#| echo: false
+
+nb_ecoregions_sp_graph(params$"fam")
+
+```

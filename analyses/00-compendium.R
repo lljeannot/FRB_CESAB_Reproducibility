@@ -1,6 +1,3 @@
-library(here)
-library(rcompendium)
-library(roxygen2)
 
 ## Ajout d'un fichier DESCRIPTION ----
 add_description()
@@ -12,6 +9,8 @@ add_license(license = "GPL-2")
 add_compendium(compendium = c("data", "analyses", "R", "figures", "outputs"))
 
 usethis::use_r("dl")
+usethis::use_r("nb_ecoregions_sp")
+usethis::use_r("nb_ecoregions_sp_graph")
 
 ## Génération de la doc ----
 devtools::document()
@@ -36,3 +35,10 @@ add_readme_rmd(type = "compendium")
 
 ## Conversion du README.Rmd en README.md ----
 rmarkdown::render("README.Rmd")
+
+ecoregions_data <- readr::read_csv("data/wildfinder/wildfinder-ecoregions_list.csv")
+species_data <- readr::read_csv("data/wildfinder/wildfinder-ecoregions_species.csv")
+mammals_data <- readr::read_csv("data/wildfinder/wildfinder-mammals_list.csv")
+
+nb_ecoregions_sp_graph("Lemuridae")
+  

@@ -16,6 +16,9 @@ License: GPL-2
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Depends:
+    ggplot2,
+    tidyverse
 Imports: 
     devtools,
     here,
@@ -24,4 +27,5 @@ Imports:
     rmarkdown,
     roxygen2,
     usethis,
-    utils
+    utils,
+    knitr

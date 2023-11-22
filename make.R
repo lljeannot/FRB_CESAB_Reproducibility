@@ -17,7 +17,7 @@ devtools::install_deps(upgrade = "never")
 
 ## Load Project Addins (R Functions and Packages) ----
 
-devtools::load_all(here::here())
+devtools::load_all(here::here()) #pas besoin de mettre ca si on utilise rmarkdown
 
 
 ## Global Variables ----
@@ -31,7 +31,6 @@ devtools::load_all(here::here())
 
 source(here::here("analyses", "download-data.R"))
 
-dl("github.com/rdatatoolbox/datarepo/blob/main/data/pantheria/PanTHERIA_1-0_WR05_Aug2008.txt",
-      "github.com/rdatatoolbox/datarepo/blob/main/data/wildfinder/wildfinder-ecoregions_list.csv",
-      "github.com/rdatatoolbox/datarepo/blob/main/data/wildfinder/wildfinder-ecoregions_species.csv",
-      "github.com/rdatatoolbox/datarepo/blob/main/data/wildfinder/wildfinder-mammals_list.csv")
+rmarkdown::render(here::here("index.qmd"),
+                  params = list(fam = "Ursidae"))
+
